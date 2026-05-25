@@ -32,7 +32,7 @@
       position:relative;
     }
 
-    /* Fundo minimalista */
+    /* Fundo */
 
     .background-letters{
       position:absolute;
@@ -44,8 +44,6 @@
       user-select:none;
     }
 
-    /* Imagem de fundo */
-
     .background-letters img{
       width:100%;
       height:100%;
@@ -54,8 +52,6 @@
       opacity:0.25;
       transform:scale(1.02);
     }
-
-    /* Ajustes para diferentes tamanhos de ecrã */
 
     @media (max-width:1200px){
       .background-letters img{
@@ -85,7 +81,7 @@
       }
     }
 
-    /* Container principal */
+    /* Container */
 
     .container{
       width:100%;
@@ -111,7 +107,7 @@
       font-size:0.9rem;
     }
 
-    /* Grid dos botões */
+    /* Botões */
 
     .button-grid{
       display:grid;
@@ -131,6 +127,10 @@
       transition:0.3s ease;
       position:relative;
       overflow:hidden;
+      cursor:pointer;
+      display:flex;
+      justify-content:center;
+      align-items:center;
     }
 
     .hub-button:hover{
@@ -160,14 +160,30 @@
       left:100%;
     }
 
-    footer{
-      margin-top:60px;
-      color:#5e6670;
-      font-size:0.8rem;
-      letter-spacing:2px;
+    /* Páginas internas */
+
+    .page-title{
+      font-size:2rem;
+      margin-bottom:30px;
     }
 
-    /* Ecrã da senha */
+    .back-button{
+      margin-bottom:30px;
+      padding:14px 20px;
+      border:none;
+      border-radius:14px;
+      background:#232931;
+      color:white;
+      cursor:pointer;
+      font-weight:700;
+      transition:0.3s;
+    }
+
+    .back-button:hover{
+      background:#2f3742;
+    }
+
+    /* Login */
 
     .login-screen{
       position:fixed;
@@ -251,10 +267,6 @@
         font-size:1.2rem;
       }
 
-      .background-letters h1{
-        font-size:40vw;
-      }
-
     }
 
   </style>
@@ -262,10 +274,12 @@
 
 <body>
 
-  <!-- Ecrã da senha -->
+  <!-- LOGIN -->
 
   <div class="login-screen" id="loginScreen">
+
     <div class="login-box">
+
       <h2>Acesso Restrito</h2>
 
       <input
@@ -282,10 +296,12 @@
       <div class="error-message" id="errorMessage">
         Senha incorreta.
       </div>
+
     </div>
+
   </div>
 
-  <!-- Letras de fundo -->
+  <!-- Fundo -->
 
   <div class="background-letters">
     <img src="SC Template_PPT.jpg" alt="Fundo Sumol Compal">
@@ -299,19 +315,111 @@
 
     <p class="subtitle">Links:</p>
 
-    <div class="button-grid">
+    <!-- MENU PRINCIPAL -->
 
-      <!-- ALTERAR LINKS AQUI -->
+    <div class="button-grid" id="mainMenu">
 
-      <a href="03-apoio_produção.html" class="hub-button">Apoio Produção</a>
+      <div onclick="showApoio()" class="hub-button">
+        Apoio Produção
+      </div>
 
-      <a href="02-embalagens.html" class="hub-button">Embalagens</a>
+      <div onclick="showEmbalagens()" class="hub-button">
+        Embalagens
+      </div>
 
-      <a href="https://www.ipma.pt/pt/otempo/prev.localidade.hora/#Santar%C3%A9m&Almeirim" class="hub-button">IPMA Almeirim</a>
+      <a href="https://intranet.sumolcompal.pt"
+         target="_blank"
+         class="hub-button">
+         Intranet
+      </a>
 
-      <a href="https://intranet.sumolcompal.pt" class="hub-button">Intranet</a>
+      <a href="https://www.ipma.pt/pt/index.html"
+         target="_blank"
+         class="hub-button">
+         IPMA →
+      </a>
 
-      <a href="https://radioonline.com.pt/" class="hub-button">Radio</a>
+      <a href="https://radioonline.com.pt/"
+         target="_blank"
+         class="hub-button">
+         Rádio →
+      </a>
+
+    </div>
+
+    <!-- APOIO PRODUÇÃO -->
+
+    <div id="apoioPage" style="display:none; margin-top:40px;">
+
+      <button onclick="showHome()" class="back-button">
+        ← Voltar
+      </button>
+
+      <h2 class="page-title">
+        Apoio Produção
+      </h2>
+
+      <div class="button-grid">
+
+        <a href="https://google.pt"
+           target="_blank"
+           class="hub-button">
+           Google
+        </a>
+
+        <a href="https://google.pt"
+           target="_blank"
+           class="hub-button">
+           Google
+        </a>
+
+        <a href="https://radioonline.com.pt/"
+           target="_blank"
+           class="hub-button">
+           Rádio
+        </a>
+
+      </div>
+
+    </div>
+
+    <!-- EMBALAGENS -->
+
+    <div id="embalagensPage" style="display:none; margin-top:40px;">
+
+      <button onclick="showHomeFromEmbalagens()" class="back-button">
+        ← Voltar
+      </button>
+
+      <h2 class="page-title">
+        Embalagens
+      </h2>
+
+      <p class="subtitle">
+        Centro de atalhos
+      </p>
+
+      <div class="button-grid">
+
+        <a href="https://google.pt"
+           target="_blank"
+           class="hub-button">
+           Google
+        </a>
+
+        <a href="https://google.pt"
+           target="_blank"
+           class="hub-button">
+           Google
+        </a>
+
+        <a href="https://radioonline.com.pt/"
+           target="_blank"
+           class="hub-button">
+           Rádio
+        </a>
+
+      </div>
 
     </div>
 
@@ -319,7 +427,8 @@
 
   <script>
 
-    // ALTERAR A SENHA AQUI
+    // PASSWORD
+
     const correctPassword = "0";
 
     function checkPassword(){
@@ -340,7 +449,7 @@
 
     }
 
-    // Enter para entrar
+    // ENTER
 
     document.getElementById("passwordInput").addEventListener("keypress", function(event){
 
@@ -349,6 +458,42 @@
       }
 
     });
+
+    // APOIO PRODUÇÃO
+
+    function showApoio(){
+
+      document.getElementById("mainMenu").style.display = "none";
+
+      document.getElementById("apoioPage").style.display = "block";
+
+    }
+
+    function showHome(){
+
+      document.getElementById("mainMenu").style.display = "grid";
+
+      document.getElementById("apoioPage").style.display = "none";
+
+    }
+
+    // EMBALAGENS
+
+    function showEmbalagens(){
+
+      document.getElementById("mainMenu").style.display = "none";
+
+      document.getElementById("embalagensPage").style.display = "block";
+
+    }
+
+    function showHomeFromEmbalagens(){
+
+      document.getElementById("mainMenu").style.display = "grid";
+
+      document.getElementById("embalagensPage").style.display = "none";
+
+    }
 
   </script>
 
